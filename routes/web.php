@@ -3,5 +3,5 @@
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',[CategoryController::class, 'all']
-);
+Route::get('categories',[CategoryController::class, 'all']);
+Route::get('categories/{id}',[CategoryController::class, 'show']);
