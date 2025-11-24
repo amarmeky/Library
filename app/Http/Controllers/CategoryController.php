@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function all(){
+    public function all()
+    {
         $categories = Category::all();
-        return view("Categories.all",['categories'=>$categories]);
+        return view("Categories.all", ['categories' => $categories]);
     }
-    public function show($id){
-        $category=Category::findorFail($id);
-        return view("Categories.all",['category'=>$category,'id'=>$id]);
+    public function show($id)
+    {
+        $category = Category::findorFail($id);
+        return view("Categories.one", ['category' => $category, 'id' => $id]);
     }
 }

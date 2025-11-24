@@ -9,17 +9,12 @@
 </head>
 
 <body>
-    @if (isset($id))
-        {{ $category->name }}<br>
-        {{ $category->description }}
+
+    @foreach ($categories as $category)
+        {{ $category->name}}<br>
+        {{ $category->description}}
         <hr>
-    @else
-        @foreach ($categories as $category)
-            {{ $category->name}}<br>
-            {{ $category->description}}
-            <hr>
-        @endforeach
-    @endif
+    @endforeach
 
 </body>
 
