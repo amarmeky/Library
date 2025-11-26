@@ -17,4 +17,17 @@ class CategoryController extends Controller
         $category = Category::findorFail($id);
         return view("Categories.one", ['category' => $category, 'id' => $id]);
     }
+
+    public function create(){
+        return view("Categories.create");
+    }
+    public function store(Request $request){
+        $data = $request->validate([
+            'name'=>"required|string|max:225",
+            'desc'=>"required|string",
+        ]);
+
+        Category::create($data);
+        return redirect(url("categories"));
+    }
 }
