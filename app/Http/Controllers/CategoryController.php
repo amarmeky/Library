@@ -18,16 +18,22 @@ class CategoryController extends Controller
         return view("Categories.one", ['category' => $category, 'id' => $id]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view("Categories.create");
     }
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $data = $request->validate([
-            'name'=>"required|string|max:225",
-            'desc'=>"required|string",
+            'name' => "required|string|max:225",
+            'desc' => "required|string",
         ]);
 
-        Category::create($data);
+        Category::create([
+            'name' => $data['name'],
+            'description' => $data['desc'],
+        ]);
+
         return redirect(url("categories"));
     }
 }
