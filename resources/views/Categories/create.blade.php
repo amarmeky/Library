@@ -9,10 +9,17 @@
 </head>
 
 <body>
+@include('errors.error')
     <form action="{{ url("categories") }}" method="post">
         @csrf
-        <input type="text" name="name" required>
-        <textarea name="desc" id="" cols="30" rows="10" required></textarea>
+        <input type="text" name="name">
+        {{-- @error("name")
+        {{ $message }}
+        @enderror --}}
+        <textarea name="desc" id="" cols="30" rows="10"></textarea>
+        {{-- @error("desc")
+        {{ $message }}
+        @enderror --}}
         <button type="submit">Create</button>
     </form>
 </body>

@@ -31,9 +31,8 @@ class CategoryController extends Controller
 
         Category::create([
             'name' => $data['name'],
-            'description' => $data['desc'],
+            'description' => $data['desc']
         ]);
-
         return redirect(url("categories"));
     }
 }
