@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Categories</title>
-</head>
-
-<body>
-
+@extends('layout')
+@section('title')
+    All Categoryies
+@endsection
+@section('content')
+    <a href="{{ url("categories/create") }}">Create Category
+        <br>
+    </a>
     @foreach ($categories as $category)
-        {{ $category->name}}<br>
+        {{ $loop->iteration }}-
+        <a href="{{ url("categories/$category->id") }}">{{ $category->name}}<br></a>
         {{ $category->description}}
         <hr>
     @endforeach
-
-</body>
-
-</html>
+@endsection

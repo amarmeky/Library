@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::findorFail($id);
-        return view("Categories.one", ['category' => $category, 'id' => $id]);
+        return view("Categories.show", ['category' => $category, 'id' => $id]);
     }
 
     public function create()
