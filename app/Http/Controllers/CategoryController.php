@@ -35,4 +35,34 @@ class CategoryController extends Controller
         ]);
         return redirect(url("categories"));
     }
+    public function edit($id)
+    {
+        $category = Category::findOrFail($id);
+        return view("Categories.edit", ['category' => $category, 'id' => $id]);
+    }
+    public function update(Request $request, $id)
+    {
+
+
+        $data = $request->validate([
+            'name' => "required|string|max:225",
+            'desc' => "required|string",
+        ]);
+
+
+        $category = Category::findOrFail($request->id);
+        $category->update([
+            'name' => $data['name'],
+            'description' => $data['desc']
+        ]);
+        $category->save();
+
+        return redirect(url("categories"));
+    }
+    public function delete($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect(url("categories"));
+    }
 }

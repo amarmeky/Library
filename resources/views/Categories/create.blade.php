@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     @include('errors.error')
-    <form action="{{ url("categories") }}" method="post">
+    <form action="{{ route("categories.store") }}" method="post">
         @csrf
         <input type="text" name="name">
         <textarea name="desc" id="" cols="30" rows="10"></textarea>

@@ -3,7 +3,7 @@
     All Categoryies
 @endsection
 @section('content')
-    <a href="{{ url("categories/create") }}">Create Category
+    <a href="{{ route('categories.create')}}">Create Category
         <br>
     </a>
     @foreach ($categories as $category)
