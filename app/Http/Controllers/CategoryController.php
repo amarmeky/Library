@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
+use function Symfony\Component\String\s;
+
 class CategoryController extends Controller
 {
     public function all()
@@ -26,36 +28,26 @@ class CategoryController extends Controller
     {
         $data = $request->validate([
             'name' => "required|string|max:225",
-            'desc' => "required|string",
+            'description' => "required|string",
         ]);
 
-        Category::create([
-            'name' => $data['name'],
-            'description' => $data['desc']
-        ]);
+        Category::create($data);
+        session()->flash('success', 'category created successfully');
         return redirect(url("categories"));
     }
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view("Categories.edit", ['category' => $category, 'id' => $id]);
+        return view("Categories.edit", compact('category'));
     }
     public function update(Request $request, $id)
     {
-
-
         $data = $request->validate([
             'name' => "required|string|max:225",
-            'desc' => "required|string",
+            'description' => "required|string",
         ]);
-
-
-        $category = Category::findOrFail($request->id);
-        $category->update([
-            'name' => $data['name'],
-            'description' => $data['desc']
-        ]);
-        $category->save();
+        Category::findOrFail($id)->update($data);
+        session()->flash('success', 'category updated successfully');
 
         return redirect(url("categories"));
     }
@@ -63,6 +55,8 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
+        session()->flash('success', 'category deleted successfully');
+
         return redirect(url("categories"));
     }
 }

@@ -3,6 +3,9 @@
     Show Category
 @endsection
 @section('content')
+    @if (session()->has('success'))
+        <div class="alert alert-success">{{ session()->get('success') }}</div>
+    @endif
     {{ $category->name }}<br>
     {{ $category->description }}
     <br>

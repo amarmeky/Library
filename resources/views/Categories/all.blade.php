@@ -3,6 +3,9 @@
     All Categoryies
 @endsection
 @section('content')
+    @if (session()->has('success'))
+        <div class="alert alert-success">{{ session()->get('success') }}</div>
+    @endif
     <a href="{{ route('categories.create')}}">Create Category
         <br>
     </a>
