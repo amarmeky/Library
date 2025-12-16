@@ -29,6 +29,7 @@ class CategoryController extends Controller
         $data = $request->validate([
             'name' => "required|string|max:225",
             'description' => "required|string",
+            'image'=>"required|image|max:2048|mimes:jpeg,png,jpg,gif,svg",
         ]);
 
         Category::create($data);

@@ -10,6 +10,7 @@
         {{ $loop->iteration }}-
         <a href="{{ url("categories/$category->id") }}">{{ $category->name}}<br></a>
         {{ $category->description}}
+        {{ $category->image}}
         <hr>
     @endforeach
     {{ $categories->links() }}
