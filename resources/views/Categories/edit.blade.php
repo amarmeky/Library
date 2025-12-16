@@ -3,10 +3,6 @@
     Edit category
 @endsection
 @section('content')
-    @include("errors.error")
-    @if (session()->has('success'))
-        <div class="alert alert-success">{{ session()->get('success') }}</div>
-    @endif
     <form action="{{ route('categories.update', ['id' => $category->id]) }}" method="post">
         @csrf
         @method('put')

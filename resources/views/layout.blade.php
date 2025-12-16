@@ -12,9 +12,12 @@
 </head>
 
 <body>
+    @include("errors.error")
+    @include("successes.success")
     @yield('content')
     @yield('js')
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/js.js') }}"></script>
 </body>
 
 </html>

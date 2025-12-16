@@ -9,3 +9,6 @@
     margin-top: 10px;
 }
 
+.alert {
+    transition: opacity 0.5s ease;
+}

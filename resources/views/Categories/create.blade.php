@@ -3,7 +3,6 @@
     Create Category
 @endsection
 @section('content')
-    @include('errors.error')
     <form action="{{ route("categories.store") }}" method="post">
         @csrf
         <input type="text" name="name">
