@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function all()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(2);
         return view("Categories.all", ['categories' => $categories]);
     }
     public function show($id)

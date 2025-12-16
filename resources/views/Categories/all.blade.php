@@ -12,4 +12,5 @@
         {{ $category->description}}
         <hr>
     @endforeach
+    {{ $categories->links() }}
 @endsection
