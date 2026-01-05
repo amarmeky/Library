@@ -6,7 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-use function Symfony\Component\String\s;
+
 
 class CategoryController extends Controller
 {
@@ -17,7 +17,7 @@ class CategoryController extends Controller
     }
     public function show($id)
     {
-        $category = Category::findorFail($id);
+        $category = Category::findOrFail($id);
         return view("Categories.show", ['category' => $category, 'id' => $id]);
     }
 
@@ -28,7 +28,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => "required|string|max:225",
+            'name' => "required|string|max:255",
             'description' => "required|string",
             'image' => "required|image|max:2048|mimes:jpeg,png,jpg,gif,svg",
         ]);
@@ -36,7 +36,7 @@ class CategoryController extends Controller
         $data['image'] = Storage::putFile("categories", $data['image']);
         Category::create($data);
         session()->flash('success', 'category created successfully');
-        return redirect(url("categories"));
+        return redirect(route("categories.all"));
     }
     public function edit($id)
     {
@@ -46,7 +46,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            "name" => "required|string|max:225",
+            "name" => "required|string|max:255",
             "description" => "required|string",
             "image" => "image|mimes:jpeg,png,jpg,gif,svg|max:2048",
         ]);
@@ -60,17 +60,16 @@ class CategoryController extends Controller
         $category->update($data);
         session()->flash('success', 'category updated successfully');
 
-        return redirect(url("categories/{$id}"));
+        return redirect(route("categories.show", $id));
     }
     public function delete($id)
     {
         $category = Category::findOrFail($id);
-        if($category->image){
+        if ($category->image) {
             Storage::delete($category->image);
         }
         $category->delete();
         session()->flash('success', 'category deleted successfully');
-
-        return redirect(url("categories"));
+        return redirect(route("categories.all"));
     }
 }
