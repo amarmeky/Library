@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
+
 Route::controller(CategoryController::class)->group(function () {
     Route::get('categories', 'all')->name('categories.all');
     Route::get('categories/create', 'create')->name('categories.create');
