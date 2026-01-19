@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    protected $fillabel = ["title", "description", "image", "small_desc", "price", "user_id", "category_id"];
-    function user() {
+    protected $fillable = ["title", "description", "image", "small_desc", "price", "user_id", "category_id"];
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-    function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 }
