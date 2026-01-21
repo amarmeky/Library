@@ -13,7 +13,7 @@
     <br>
     CategoryName:{{ $book->category->name }}
     <br>
-    <img src="{{ asset('storage/' . $book->image) }}" width="300px" alt="">
+    Image:<img src="{{ asset('storage/' . $book->image) }}" width="300px" alt="">
     <br>
     <button class="btn btn-warning"><a href="{{ route('books.edit', ['id' => $book->id]) }}">Edit</a></button>
     <button class="btn btn-danger"><a href="{{ route('books.delete', ['id' => $book->id]) }}">Delete</a></button>

@@ -11,8 +11,8 @@
         <label for="desc">Description</label>
         <textarea name="description" id="desc" cols="30" rows="10">{{ $category->description }}</textarea>
         <label for="image">Image</label>
-        <input type="file" name="image">
-        <img src="{{ asset('storage/'.$category->image) }}" width="200px" alt="">
+        <input type="file" name="image" id="image">
+        <img src="{{ asset('storage/' . $category->image) }}" width="200px" alt="">
         <button type="submit" class="btn btn-info">Update</button>
     </form>
 @endsection
