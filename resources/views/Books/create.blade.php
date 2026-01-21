@@ -5,10 +5,10 @@
 @section('content')
     <form action="{{ route('books.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-        <input type="text" name="title">
-        <textarea name="description" id="" cols="30" rows="10"></textarea>
-        <textarea name="small_desc" id="" cols="30" rows="10"></textarea>
-        <input type="number" name="price">
+        <input type="text" name="title" value="{{ old('title') }}">
+        <textarea name="description" id="" cols="30" rows="10">{{ old('description') }}</textarea>
+        <textarea name="small_desc" id="" cols="30" rows="10">{{ old('small_desc') }}</textarea>
+        <input type="number" name="price" value="{{ old('price') }}">
         <select name="category_id">
             <option value="" disabled>Select category</option>
             @foreach ($categories as $category)
