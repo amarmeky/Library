@@ -8,9 +8,11 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 
 class Category extends Model
 {
-    protected $fillable=["name","description","image"];
+    use \Illuminate\Database\Eloquent\Factories\HasFactory;
+    protected $fillable = ["name", "description", "image"];
 
-    public function books(){
+    public function books()
+    {
         return $this->HasMany(Book::class);
     }
 }
