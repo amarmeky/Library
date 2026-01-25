@@ -75,7 +75,7 @@ class CategoryController extends Controller
         if ($category->image) {
             Storage::delete($category->image);
         }
-        $category->delete();
+        $category->delete($category);
         session()->flash('success', 'category deleted successfully');
 
         return redirect(route('categories.all'));

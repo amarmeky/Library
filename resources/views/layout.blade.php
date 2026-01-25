@@ -14,6 +14,12 @@
 <body>
     @include("errors.error")
     @include("successes.success")
+    <ul>
+            <form action="{{ route("logout") }}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+    </ul>
     @yield('content')
     @yield('js')
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
