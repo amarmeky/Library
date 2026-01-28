@@ -15,10 +15,16 @@
     @include("errors.error")
     @include("successes.success")
     <ul>
+        @guest
+            <li><a href="{{ route("register.form") }}">Register</a></li>
+            <li><a href="{{ route("login.form") }}">Login</a></li>
+        @endguest
+        @auth
             <form action="{{ route("logout") }}" method="post">
                 @csrf
                 <button type="submit" class="btn btn-danger">Logout</button>
             </form>
+        @endauth
     </ul>
     @yield('content')
     @yield('js')
