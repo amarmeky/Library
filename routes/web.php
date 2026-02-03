@@ -35,7 +35,8 @@ Route::controller(AuthController::class)->group(function () {
         Route::post('login', 'login')->name('login');
     });
     Route::post('logout', 'logout')->name('logout')->middleware('auth');
+    Route::get('allusers','allusers')->name('alluseres')->middleware('auth','is_admin');
 });
-Route::fallback(function () {
-    return redirect()->route('books.all');
-});
+// Route::fallback(function () {
+//     return redirect()->route('books.all');
+// });
