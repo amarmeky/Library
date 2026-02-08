@@ -16,11 +16,9 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->user_type=="admin"){
-            
-            return $next($request);
-        }else{
-            return redirect(url('login'));
+        if (Auth::user()->user_type !== "admin") {
+            return redirect(route('books.all'))->withErrors(['Unauthorized access.']);
         }
+        return $next($request);
     }
 }
